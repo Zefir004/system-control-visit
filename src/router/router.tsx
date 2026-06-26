@@ -1,8 +1,10 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import type { ReactNode } from 'react';
 import { Login } from '../components/pages/login/login.tsx';
-import { MainStudent } from '../components/pages/mainStudent/mainStudent.tsx';
-import { MainTeacher } from '../components/pages/mainTeacher/mainTeacher.tsx';
+import  MainStudent  from '../components/pages/mainStudent/mainStudent.tsx';
+import DisciplinePage from '../components/pages/disciplinePage/disciplinePage';
+import  MainTeacher  from '../components/pages/mainTeacher/mainTeacher.tsx';
+import TeacherGroupPage from '../components/pages/teacherGroupPage/teacherGroupPage';
 import { getUserRole, isAuthenticated, type UserRole } from '../utils/auth.ts';
 interface ProtectedRouteProps {
   children: ReactNode;
@@ -29,11 +31,29 @@ export const Router = () => {
           </ProtectedRoute>
         }
       />
+       {/* Страница дисциплины для студента */}
+      <Route
+        path="/student/discipline/:id"
+        element={
+          <ProtectedRoute role="student">
+            <DisciplinePage />
+          </ProtectedRoute>
+        }
+      />
       <Route
         path="/teacher"
         element={
           <ProtectedRoute role="teacher">
             <MainTeacher />
+          </ProtectedRoute>
+        }
+      />
+       {/* Страница группы для преподавателя */}
+      <Route
+        path="/teacher/group/:groupId"
+        element={
+          <ProtectedRoute role="teacher">
+            <TeacherGroupPage />
           </ProtectedRoute>
         }
       />

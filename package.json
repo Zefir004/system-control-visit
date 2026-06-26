@@ -34,5 +34,5 @@
     "typescript-eslint": "^8.59.2",
     "vite": "^8.0.12"
   },
-  "$schema": "http://json.schemastore.org/package"
+  "$schema": "https://json.schemastore.org/package"
 }

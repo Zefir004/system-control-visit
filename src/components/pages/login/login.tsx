@@ -29,8 +29,9 @@ export const Login = () => {
 
       setAuth(user, generateToken());
       navigate(user.role === 'student' ? '/student' : '/teacher');
-    } catch {
+    } catch(e) {
       setError('Не удалось подключиться к серверу. Запустите npm run api');
+      console.log(e)
     } finally {
       setLoading(false);
     }
